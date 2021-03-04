@@ -62,7 +62,7 @@ def weather():
     
     country = "India"
   
-    api = '1698a076f54bd4a9cd70ad24c66c512c' 
+    api = 'api_key' 
   
     try:
         source = urllib.request.urlopen("https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + stateCode[state.capitalize()].upper() + "," + countryCode[country.capitalize()].upper() + "&appid=" + api).read()
@@ -83,7 +83,7 @@ def weather():
         "statename" : str(state.capitalize()),
         "countryname" : str(country.capitalize()),
     } 
-    print(data) 
+#     print(data) 
     return render_template('weather.html', data = data)
 
 
