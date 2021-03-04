@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather Update</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/weather.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navigation_bar">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{url_for('home')}}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Services</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Soil Check</a></li>
+                    <li><a class="dropdown-item" href="#">Water Check</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Pesticide Check</a></li>
+                    <li><a class="dropdown-item" href="#">Fertilizer Check</a></li>
+                </ul>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Market-Price</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dealers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Revenue-Predictor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Support</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Weather Update</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="row">
+        <form method="post" class="col-md-6 col-md-offset-3">
+            <div class="input-group">
+                <input type="text" class="form-control" name="city" placeholder="Enter City">
+                <input type="text" class="form-control" name="state" placeholder="Enter State">
+                <!-- <input type="text" class="form-control" name="country" placeholder="Enter Country"> -->
+            </div>
+            <div class="input-group">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        <form>
+    </div>
+    <div class="row">
+    {% if data.country_code and data.coordinate and data.temp and data.pressure and data.humidity %}
+    <div class="col-md-6 col-md-offset-3 city_details">
+        <h3>Country Code : {{data.country_code}}</h3>
+        <hr>
+        <h4>City Name &emsp;&nbsp; : {{data.cityname}}</h4>
+        <h4>State Name &emsp;: {{data.statename}}</h4>
+        <!-- <h4>Country Name  : {{data.countryname}}</h4> -->
+        <hr>
+        <h5>Temp (in kelvin) &emsp; : {{data.temp}}</h5>
+        <h5>Temp (in celcius) &ensp; : {{data.temp_cel}}</h5>
+        <h5>Pressure &emsp;&emsp;&emsp;&emsp; : {{data.pressure}} </h5>
+        <h5>Humidity &nbsp;&emsp;&emsp;&emsp;&emsp; : {{data.humidity}}</h5>
+        <h5>Coordinate &emsp;&emsp;&emsp; : {{data.coordinate}}</h5>
+    </div>
+    {% endif %}
+  </div>
+</body>
+
+</html>
